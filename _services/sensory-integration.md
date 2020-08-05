@@ -1,5 +1,5 @@
 ---
-title: "Superannuation"
+title: "Sensory Integration"
 image: "/services/default.png"
 ---
 

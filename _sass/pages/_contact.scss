@@ -1,5 +1,5 @@
-.page-services-list {
-  background-image: url('../images/undraw_medicine_b1ol.svg');
+.page-contact {
+  background-image: url('../images/undraw_contact_us_15o2.svg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 49px -40px;
@@ -13,6 +13,6 @@
   }
   @include media-breakpoint-up(lg) {
     background-size: 50%;
-    background-position: 100% 20px;
+    background-position: 100% 0px;
   }
 }
