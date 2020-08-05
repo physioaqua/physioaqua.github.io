@@ -2,7 +2,7 @@
 layout: post
 title:  Difference between Swimming and Aquatic Therapy
 tags:
-- blog
+ - blog
 ---
 Swimming and relaxing are the most common associated words with Water, but do you know that water can be used in rehabilitation and strengthening as well?
 
