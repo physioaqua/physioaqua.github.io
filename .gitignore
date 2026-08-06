@@ -1,24 +1,28 @@
-# Test files
-node_modules
-npm-debug.log
+# macOS / Windows cruft
+.DS_Store
+Desktop.ini
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
 
-# Jekyll
-_site
-.jekyll-metadata
-.sass-cache
+# Editor
+.vscode/
 
 # Temporary files
 tmp
 
-# Folder view configuration files
-.DS_Store
-Desktop.ini
+# Leftovers from the previous Jekyll site
+_site
+.jekyll-metadata
+.jekyll-cache
+.sass-cache
 
-# Thumbnail cache files
-._*
-Thumbs.db
+# Brainstorming session mockups
+.superpowers/
 
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-.vscode/
+# Original camera media (HEIC/MP4/full-res JPG) stays local and unpublished.
+# Anything committed here is served publicly from physioaqua.com — that must not
+# include full-resolution photographs of patients or children. The processed,
+# published images live in images/; the crops are recorded in the spec.
+assets/

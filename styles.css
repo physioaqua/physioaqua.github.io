@@ -1,0 +1,388 @@
+/* PhysioAqua — single-page site
+   Direction: "Water & Light". Type: Outfit (display) + Karla (body), self-hosted. */
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('fonts/outfit.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('fonts/karla.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --deep: #08363F;
+  --mid: #0F5A69;
+  --lit: #7FD8E3;
+  --sand: #E4D9C6;
+  --paper: #F2F8F9;
+  --ink: #123037;
+  --body-text: #4B6A71;
+  --rule: #DCE8EA;
+  --white: #FFFFFF;
+
+  --display: 'Outfit', 'Trebuchet MS', sans-serif;
+  --text: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --pad-x: clamp(20px, 5vw, 56px);
+  --pad-y: clamp(44px, 7vw, 76px);
+  --maxw: 1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--text);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img, iframe { max-width: 100%; }
+
+a { color: var(--mid); }
+
+h1, h2, h3, h4, p { margin: 0; }
+
+/* keyboard access ------------------------------------------------------- */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--lit);
+  color: var(--deep);
+  padding: 12px 18px;
+  font-weight: 700;
+  z-index: 100;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+:focus-visible {
+  outline: 3px solid var(--lit);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.on-light :focus-visible { outline-color: var(--mid); }
+
+/* shared ---------------------------------------------------------------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+
+section { padding: var(--pad-y) 0; }
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--mid);
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 300;
+  line-height: 1.09;
+  letter-spacing: -.018em;
+  text-wrap: balance;
+  margin-bottom: 16px;
+}
+
+.lede { max-width: 58ch; color: var(--body-text); font-size: clamp(15px, 1.4vw, 16px); }
+
+/* buttons --------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: transform .15s ease, background-color .15s ease;
+  min-height: 48px;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--lit); color: var(--deep); }
+.btn-primary:hover { background: #99E2EB; }
+.btn-ghost { border-color: rgba(160, 205, 215, .5); color: #DCF1F5; }
+.btn-ghost:hover { border-color: var(--lit); }
+.btn-solid { background: var(--mid); color: var(--white); }
+.btn-solid:hover { background: #14707F; }
+.btn-outline { border-color: #BCD7DC; color: var(--deep); }
+.btn-outline:hover { border-color: var(--mid); }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+/* header ---------------------------------------------------------------- */
+.masthead { background: var(--deep); }
+.masthead .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  gap: 16px;
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--white);
+  font-size: 20px;
+  letter-spacing: .055em;
+  text-decoration: none;
+}
+.brand span { color: var(--lit); }
+.masthead nav { display: flex; gap: 24px; align-items: center; }
+.masthead nav a { color: #9CC6CE; font-size: 14px; text-decoration: none; }
+.masthead nav a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--lit);
+  color: var(--deep) !important;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 100px;
+}
+
+/* 1 · hero -------------------------------------------------------------- */
+.hero { background: var(--deep); padding: 0; }
+/* Constrained to the same column as .wrap so the headline aligns with the rest
+   of the page; the deep background still bleeds full width behind it. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: stretch;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.hero-copy { padding: var(--pad-y) clamp(28px, 4vw, 56px) var(--pad-y) var(--pad-x); }
+.hero .eyebrow { color: var(--lit); }
+.hero h1 { font-size: clamp(31px, 4.6vw, 47px); color: var(--white); }
+.hero h1 b { font-weight: 500; color: var(--lit); }
+.hero p { color: #A9CED6; font-size: clamp(15px, 1.5vw, 17px); max-width: 36ch; }
+.hero-photo {
+  background: url('images/hero-portrait.jpg') center 18% / cover no-repeat;
+  min-height: 460px;
+}
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+.badges li {
+  list-style: none;
+  font-size: 12px;
+  color: #7FA9B3;
+  border: 1px solid rgba(127, 169, 179, .35);
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+.badges { padding: 0; margin-bottom: 0; }
+
+/* 2 · conditions -------------------------------------------------------- */
+.conditions { background: var(--paper); }
+.conditions h2 { font-size: clamp(25px, 3vw, 33px); color: var(--deep); }
+.cond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: 0;
+}
+.cond-grid li { list-style: none; background: var(--white); padding: 22px 20px; }
+.cond-grid h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 16.5px;
+  color: var(--deep);
+  margin-bottom: 7px;
+}
+.cond-grid p { font-size: 13.5px; color: #5E7C82; line-height: 1.6; }
+
+/* 3 · what is it (water band) ------------------------------------------- */
+.explain {
+  position: relative;
+  background: url('images/water-band.jpg') center 62% / cover no-repeat;
+  background-color: var(--deep);
+}
+.explain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(8,54,63,.94) 0%, rgba(8,54,63,.74) 48%, rgba(8,54,63,.34) 100%);
+}
+.explain .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 4vw, 52px); align-items: center; }
+.explain .eyebrow { color: var(--lit); }
+.explain h2 { font-size: clamp(24px, 2.9vw, 32px); color: var(--white); max-width: 20ch; }
+.explain p.lede { color: #A9CED6; max-width: 46ch; }
+.facts { display: flex; flex-direction: column; gap: 20px; padding: 0; margin: 0; }
+.facts li { list-style: none; border-left: 2px solid var(--lit); padding-left: 16px; }
+.facts b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 200;
+  font-size: clamp(28px, 3.4vw, 36px);
+  color: var(--white);
+  line-height: 1;
+}
+.facts span { font-size: 13.5px; color: #9FCBD3; display: block; margin-top: 6px; line-height: 1.55; }
+
+/* 4 · why this pool ----------------------------------------------------- */
+.why h2 { font-size: clamp(24px, 2.9vw, 32px); color: var(--deep); max-width: 22ch; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 36px; padding: 0; }
+.why-grid li { list-style: none; }
+.why-grid h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--deep);
+  border-top: 2px solid var(--lit);
+  padding-top: 15px;
+  margin-bottom: 8px;
+}
+.why-grid p { font-size: 13.5px; color: #5E7C82; line-height: 1.65; }
+
+/* 5 · children ---------------------------------------------------------- */
+/* The photograph is already cropped to its final framing, so the page shows it
+   whole rather than re-cropping it — object-fit would cut the faces. */
+.children img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: clamp(30px, 4vw, 46px);
+}
+.children .wrap { padding-bottom: 0; }
+.children-copy { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 4vw, 48px); align-items: start; }
+.children h2 { font-size: clamp(24px, 2.9vw, 32px); color: var(--deep); max-width: 19ch; }
+.child-points { display: flex; flex-direction: column; gap: 14px; padding: 0; margin: 6px 0 0; }
+.child-points li {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--body-text);
+  line-height: 1.6;
+}
+.child-points li::before { content: '\25C6'; color: var(--lit); font-size: 15px; line-height: 1.4; }
+
+/* 6 · therapist --------------------------------------------------------- */
+.therapist { background: var(--sand); }
+.therapist .eyebrow { color: #7C6A50; }
+.therapist h2 { font-size: clamp(24px, 2.9vw, 32px); color: var(--deep); }
+.dr-card {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.dr-photo { background: url('images/therapist.jpg') center 24% / cover no-repeat; min-height: 400px; }
+.dr-body { padding: clamp(28px, 3vw, 38px); display: flex; flex-direction: column; justify-content: center; }
+.dr-name { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.4vw, 27px); color: var(--deep); letter-spacing: -.01em; }
+.dr-role {
+  font-size: 12.5px;
+  color: var(--mid);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin: 5px 0 20px;
+}
+.creds { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 0 0 22px; }
+.creds li {
+  list-style: none;
+  background: #EAF6F8;
+  color: var(--mid);
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.dr-body p { font-size: 14.5px; color: var(--body-text); line-height: 1.72; margin-bottom: 16px; }
+.dr-body p b { color: var(--deep); }
+
+/* 7 · visit ------------------------------------------------------------- */
+.visit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 48px); }
+.visit h2 { font-size: clamp(22px, 2.6vw, 29px); color: var(--deep); }
+.details { padding: 0; margin: 0; }
+.details div {
+  display: flex;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid #E7F0F2;
+  font-size: 14px;
+  color: #41585E;
+  line-height: 1.6;
+}
+.details dt { color: var(--deep); font-weight: 700; min-width: 76px; flex-shrink: 0; margin: 0; }
+.details dd { margin: 0; }
+.details code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  background: #F0F6F7;
+  padding: 2px 7px;
+  border-radius: 3px;
+  color: var(--mid);
+}
+.map { border-radius: 9px; overflow: hidden; border: 1px solid var(--rule); min-height: 300px; }
+.map iframe { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; }
+
+/* footer ---------------------------------------------------------------- */
+.site-foot { background: var(--deep); color: #7FA9B3; font-size: 13px; padding: 32px 0; }
+.site-foot .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+.site-foot a { color: #A9CED6; }
+
+/* sticky mobile bar ----------------------------------------------------- */
+.thumbbar { display: none; }
+
+@media (max-width: 860px) {
+  .hero-grid,
+  .explain .wrap,
+  .children-copy,
+  .visit .wrap,
+  .dr-card { grid-template-columns: 1fr; }
+
+  .cond-grid,
+  .why-grid { grid-template-columns: 1fr; }
+
+  .hero-copy { padding: var(--pad-y) var(--pad-x); }
+  .hero-photo { min-height: 300px; order: -1; }
+  .dr-photo { min-height: 320px; }
+  .masthead nav a:not(.nav-cta) { display: none; }
+
+  body { padding-bottom: 76px; }
+
+  .thumbbar {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--deep);
+    padding: 12px var(--pad-x);
+    z-index: 50;
+    border-top: 1px solid rgba(127, 169, 179, .25);
+  }
+  .thumbbar .btn { flex: 1; text-align: center; padding: 14px 12px; }
+}
+
+@media (max-width: 520px) {
+  .cond-grid { border-radius: 8px; }
+  .actions .btn { flex: 1 1 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  .btn:hover { transform: none; }
+}
