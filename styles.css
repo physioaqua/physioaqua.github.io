@@ -24,6 +24,11 @@
   --paper: #F2F8F9;
   --ink: #123037;
   --body-text: #4B6A71;
+  /* Secondary text. Both are set to clear WCAG AA (4.5:1) on the grounds they
+     sit on — --muted on white/paper, --muted-warm on --sand. Darken, never
+     lighten, these two: the earlier values measured 4.49 and 3.73. */
+  --muted: #516C71;
+  --muted-warm: #5E5139;
   --rule: #DCE8EA;
   --white: #FFFFFF;
 
@@ -206,7 +211,7 @@ section { padding: var(--pad-y) 0; }
   color: var(--deep);
   margin-bottom: 7px;
 }
-.cond-grid p { font-size: 13.5px; color: #5E7C82; line-height: 1.6; }
+.cond-grid p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 
 /* 3 · what is it (water band) ------------------------------------------- */
 .explain {
@@ -249,7 +254,7 @@ section { padding: var(--pad-y) 0; }
   padding-top: 15px;
   margin-bottom: 8px;
 }
-.why-grid p { font-size: 13.5px; color: #5E7C82; line-height: 1.65; }
+.why-grid p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
 
 /* 5 · children ---------------------------------------------------------- */
 /* The photograph is already cropped to its final framing, so the page shows it
@@ -277,7 +282,7 @@ section { padding: var(--pad-y) 0; }
 
 /* 6 · therapist --------------------------------------------------------- */
 .therapist { background: var(--sand); }
-.therapist .eyebrow { color: #7C6A50; }
+.therapist .eyebrow { color: var(--muted-warm); }
 .therapist h2 { font-size: clamp(24px, 2.9vw, 32px); color: var(--deep); }
 .dr-card {
   display: grid;
